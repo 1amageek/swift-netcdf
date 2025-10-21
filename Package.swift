@@ -2,7 +2,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "netcdf-swift",
+    name: "swift-netcdf",
     platforms: [
         .macOS(.v13),
         .iOS(.v13),
@@ -16,9 +16,6 @@ let package = Package(
             targets: ["NetCDF"]
         )
     ],
-    dependencies: [
-        .package(url: "https://github.com/apple/swift-testing.git", from: "0.10.0")
-    ],
     targets: [
         .binaryTarget(
             name: "CNetCDF",
@@ -31,8 +28,7 @@ let package = Package(
         .testTarget(
             name: "NetCDFTests",
             dependencies: [
-                "NetCDF",
-                .product(name: "Testing", package: "swift-testing")
+                "NetCDF"
             ]
         )
     ]

@@ -1,10 +1,10 @@
 # Repository Guidelines
 
 ## Project Structure & Module Organization
-netcdf-swift ships a Swift wrapper target in `Sources/NetCDF`. The upstream C sources live as a git submodule under `Sources/CNetCDF/netcdf-c` purely for building release artifacts; the Swift package itself links against a prebuilt `CNetCDF` `.xcframework` placed in `artifacts/`. Tests reside in `Tests/NetCDFTests` and use Swift Testing.
+swift-netcdf ships a Swift wrapper target in `Sources/NetCDF`. The upstream C sources live as a git submodule under `Sources/CNetCDF/netcdf-c` purely for building release artifacts; the Swift package itself links against a prebuilt `CNetCDF` `.xcframework` placed in `artifacts/`. Tests reside in `Tests/NetCDFTests` and use Swift Testing.
 
 ## Build, Test, and Development Commands
-Run `git submodule update --init --recursive` after cloning so the netCDF-C sources are present. Use `./scripts/build-netcdf-xcframework.sh` to generate `artifacts/netcdf.xcframework` locally—`swift build` expects that bundle to exist. Set `ENABLE_IOS=1` if you also need an iOS slice (the GitHub Actions workflow runs with the default macOS-only slice). For iterative Swift work run `swift build`, add `-v` when you need verbose logging, and run `swift test` (optionally `--enable-code-coverage`) to execute the Swift Testing suite.
+Run `git submodule update --init --recursive` after cloning so the netCDF-C sources are present. Use `./scripts/build-netcdf-xcframework.sh` to generate `artifacts/netcdf.xcframework` locally—`swift build` expects that bundle to exist. The script builds macOS (arm64+x86_64) and iOS (arm64) slices by default; set `SKIP_IOS=1` if you need to omit the iOS build on hosts without the SDK. For iterative Swift work run `swift build`, add `-v` when you need verbose logging, and run `swift test` (optionally `--enable-code-coverage`) to execute the Swift Testing suite.
 
 ## Coding Style & Naming Conventions
 Follow the Swift API Design Guidelines: UpperCamelCase types, lowerCamelCase members, and doc comments (`///`) for every public symbol to capture NetCDF semantics. Keep C terminology visible in Swift names (`NetCDFFile`, `dimensionCount`). Indent with four spaces and group related members using `// MARK:` sparingly for readability.

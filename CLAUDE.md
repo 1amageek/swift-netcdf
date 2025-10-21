@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-netcdf-swift is a Swift wrapper for the NetCDF (Network Common Data Form) C library. The project builds netCDF-c from source as a git submodule and exposes it to Swift through a C module wrapper.
+swift-netcdf is a Swift wrapper for the NetCDF (Network Common Data Form) C library. The project builds netCDF-c from source as a git submodule and exposes it to Swift through a C module wrapper.
 
 ## Architecture
 
